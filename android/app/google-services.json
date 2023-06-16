@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "45738498989",
+    "project_id": "skychatter-fbla",
+    "storage_bucket": "skychatter-fbla.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45738498989:android:7d207736174ffa24fe1f24",
+        "android_client_info": {
+          "package_name": "com.ryansumiantoro.sky_chatter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45738498989-4iun96lk5co49lf74sk3sbv10rvht8uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL8B77UKABDkfdJJrjg6Fq2O4eyy_qlH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45738498989-4iun96lk5co49lf74sk3sbv10rvht8uc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "45738498989-4i592qm5ul04vbkll8gs51ek0h6vvlg7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ryansumiantoro.skyChatter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

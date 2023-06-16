@@ -1,0 +1,92 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+class PostUI extends StatefulWidget {
+  final String author;
+  final String caption;
+  final List<dynamic> likes;
+  final String link;
+  final String id;
+
+  const PostUI({
+    Key? key,
+    required this.author,
+    required this.caption,
+    required this.likes,
+    required this.link,
+    required this.id,
+  }) : super(key: key);
+
+  @override
+  State<PostUI> createState() => _PostUIState();
+}
+
+class _PostUIState extends State<PostUI> {
+  @override
+  Widget build(BuildContext context) {
+    Icon icon = (widget.likes.contains(FirebaseAuth.instance.currentUser!.uid))
+        ? const Icon(
+            Icons.favorite_rounded,
+            color: Colors.red,
+          )
+        : const Icon(Icons.favorite_border_rounded);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width,
+          color: Theme.of(context).colorScheme.secondary,
+          child: Image.network(widget.link),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    if (widget.likes
+                        .contains(FirebaseAuth.instance.currentUser!.uid)) {
+                      setState(() {
+                        widget.likes
+                            .remove(FirebaseAuth.instance.currentUser!.uid);
+                      });
+
+                      FirebaseFirestore.instance
+                          .collection('Posts')
+                          .doc(widget.id)
+                          .update({'likes': widget.likes});
+                    } else {
+                      setState(() {
+                        widget.likes
+                            .add(FirebaseAuth.instance.currentUser!.uid);
+                      });
+                      FirebaseFirestore.instance
+                          .collection('Posts')
+                          .doc(widget.id)
+                          .update({'likes': widget.likes});
+                    }
+                  },
+                  icon: icon),
+              Text('•   ${widget.likes.length} Likes'),
+              const SizedBox(
+                width: 16,
+              ),
+              Text('Posted By: ${widget.author}')
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          child: Text(widget.caption),
+        ),
+        const Divider(),
+        const SizedBox(
+          height: 16,
+        ),
+      ],
+    );
+  }
+}
