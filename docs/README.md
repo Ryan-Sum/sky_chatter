@@ -1,4 +1,4 @@
-# FBLA 22-23 Project: SkyChatter
+# SkyChatter
 
 ---
 

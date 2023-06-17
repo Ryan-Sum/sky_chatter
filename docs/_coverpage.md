@@ -1,4 +1,4 @@
-![logo](images/logo.png)
+![logo](images/logo_horizontal.svg ":size=500")
 
 > An easy way for parents, teachers, and students to stay connected.
 
@@ -6,5 +6,7 @@
 - Keeps you updated
 - Streamlines education
 
-[GitHub](https://github.com/Ryan-Sum/fbla_22_23_project)
 [Documentation](documentation.md)
+[GitHub](https://github.com/Ryan-Sum/fbla_22_23_project)
+
+![color](#F0F0F0)
