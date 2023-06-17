@@ -8,6 +8,10 @@
 
 [Click Here](licenses.md)
 
+## Privacy Policy
+
+[Click Here](https://drive.google.com/file/d/1U_0OX2j0veQuuvZloneOABin5wd5VG9Q/view?usp=sharing)
+
 ## Running the App
 
 To run this app, you must first [install Flutter](https://docs.flutter.dev/get-started/install) and its associated packages. You must also download [Visual Studio Code](https://code.visualstudio.com/download) along with [Xcode](https://developer.apple.com/xcode/) (if on macOS) or [Android Studio](https://developer.android.com/studio). Once all programs are installed, ensure you have followed all required instructions in the [Flutter install instructions](https://docs.flutter.dev/get-started/install). Once that is completed, run the command 'flutter doctor' in the command prompt to ensure everything is ready.
