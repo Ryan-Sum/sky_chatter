@@ -21,7 +21,6 @@ brew install cocoapods
 
 # Install CocoaPods dependencies.
 cd ios
-pod deintegrate
 pod install # run `pod install` in the `ios` directory.
 
 exit 0
