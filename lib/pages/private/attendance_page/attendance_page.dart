@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,7 +41,7 @@ class AttendancePage extends ConsumerWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                     textAlign: TextAlign.center,
-                    'Please ask your parent or gaurdian to mark yourself absent.'),
+                    'Please ask your parent or guardian to mark yourself absent.'),
               ),
             );
           } else if (snapshot.data == UserType.parent) {
@@ -81,7 +79,7 @@ class AttendancePage extends ConsumerWidget {
                         controller: reasonController,
                         keyboardType: TextInputType.text,
                         isObscured: false,
-                        label: 'Reason For Absense',
+                        label: 'Reason For Absence',
                         validator: (value) {
                           return '';
                         },
@@ -140,13 +138,13 @@ class AttendancePage extends ConsumerWidget {
                                 trailing: Text(DateFormat("yMd").format(
                                     snapshot.data!.elementAt(index).date)),
                               ),
-                              Divider()
+                              const Divider()
                             ],
                           );
                         },
                       );
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
@@ -154,7 +152,7 @@ class AttendancePage extends ConsumerWidget {
             );
           }
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }

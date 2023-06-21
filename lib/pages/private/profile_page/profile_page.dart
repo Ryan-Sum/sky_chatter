@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sky_chatter/global_widgets/custom_button.dart';
 import 'package:sky_chatter/global_widgets/forgot_password.dart';
 import 'package:sky_chatter/main.dart';
+import 'package:sky_chatter/services/models/user_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -15,12 +16,47 @@ class ProfilePage extends ConsumerWidget {
       child: Center(
           child: Column(
         children: [
-          Spacer(),
-          Text(
-            "If you would like to make changes to your accout (including account deletion) please contact your school's office at: \n(813) 792 - 5131",
+          const Spacer(),
+          FutureBuilder(
+            future: ref.read(userProvider).getName(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(
+                  snapshot.data!,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.displayLarge,
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+          FutureBuilder(
+            future: ref.read(userProvider).getUserType(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data == UserType.parent) {
+                  return const Text('Parent');
+                } else if (snapshot.data == UserType.teacher) {
+                  return const Text('Teacher');
+                } else {
+                  return const Text('Student');
+                }
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+          const Spacer(),
+          const Text(
+            "If you would like to make changes to your account (including account deletion) please contact your school's office at: \n(813) 570 - 2074",
             textAlign: TextAlign.center,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           TextButton(
@@ -40,7 +76,7 @@ class ProfilePage extends ConsumerWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           TextButton(
@@ -61,14 +97,14 @@ class ProfilePage extends ConsumerWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           CustomButton(
               text: 'Logout',
               color: Theme.of(context).colorScheme.primary,
               function: () {
                 ref.read(authProvider).logout();
               }),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
         ],

@@ -30,7 +30,7 @@ class DistrictUser {
   static DistrictUser fromJson(Map<String, dynamic> json) {
     DistrictUser districtUser = DistrictUser(
       authID: json['authID'],
-      idNumber: (json['idNumber'] as int),
+      idNumber: json['idNumber'],
       firstName: json['firstName'],
       lastName: json['lastName'],
       userType: UserType.student,

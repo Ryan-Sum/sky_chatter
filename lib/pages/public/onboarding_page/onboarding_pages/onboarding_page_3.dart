@@ -15,7 +15,6 @@ class OnboardingPage3 extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset('assets/images/mobile_login.svg'),
-          const SizedBox(height: 64),
           Text(
             "Let's Get You Up And Running",
             textAlign: TextAlign.center,

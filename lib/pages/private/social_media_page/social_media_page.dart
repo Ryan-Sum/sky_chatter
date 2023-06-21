@@ -29,8 +29,7 @@ class _SocialMediaPageState extends State<SocialMediaPage> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(NavigationDelegate())
-      ..loadRequest(
-          Uri.parse('https://www.facebook.com/SteinbrennerWarriorFootball'));
+      ..loadRequest(Uri.parse('https://www.instagram.com/gshssenate/'));
 
     return DefaultTabController(
       length: 3,
@@ -44,7 +43,7 @@ class _SocialMediaPageState extends State<SocialMediaPage> {
               tabs: const [
                 Text('Your School'),
                 Text('Twitter'),
-                Text('Facebook')
+                Text('Instagram')
               ],
             ),
             Expanded(

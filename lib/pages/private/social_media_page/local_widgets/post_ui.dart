@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sky_chatter/services/models/post_model.dart';
 
 class PostUI extends StatefulWidget {
   final String author;
@@ -46,7 +47,7 @@ class _PostUIState extends State<PostUI> {
           child: Row(
             children: [
               IconButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (widget.likes
                         .contains(FirebaseAuth.instance.currentUser!.uid)) {
                       setState(() {
@@ -54,23 +55,48 @@ class _PostUIState extends State<PostUI> {
                             .remove(FirebaseAuth.instance.currentUser!.uid);
                       });
 
-                      FirebaseFirestore.instance
+                      await FirebaseFirestore.instance
                           .collection('Posts')
-                          .doc(widget.id)
-                          .update({'likes': widget.likes});
+                          .get()
+                          .then(
+                        (value) {
+                          for (var element in value.docs) {
+                            Post post = Post.fromJson(element.data());
+                            if (post.id == widget.id) {
+                              FirebaseFirestore.instance
+                                  .collection("Posts")
+                                  .doc(element.id)
+                                  .update({'likes': widget.likes});
+                            }
+                          }
+                        },
+                      );
                     } else {
                       setState(() {
                         widget.likes
                             .add(FirebaseAuth.instance.currentUser!.uid);
                       });
-                      FirebaseFirestore.instance
+                      await FirebaseFirestore.instance
                           .collection('Posts')
-                          .doc(widget.id)
-                          .update({'likes': widget.likes});
+                          .get()
+                          .then(
+                        (value) {
+                          for (var element in value.docs) {
+                            Post post = Post.fromJson(element.data());
+                            if (post.id == widget.id) {
+                              FirebaseFirestore.instance
+                                  .collection("Posts")
+                                  .doc(element.id)
+                                  .update({'likes': widget.likes});
+                            }
+                          }
+                        },
+                      );
                     }
                   },
                   icon: icon),
-              Text('•   ${widget.likes.length} Likes'),
+              Text(
+                  "•   ${widget.likes.length} ${widget.likes.length == 1 ? 'Like' : 'Likes'}"),
               const SizedBox(
                 width: 16,
               ),

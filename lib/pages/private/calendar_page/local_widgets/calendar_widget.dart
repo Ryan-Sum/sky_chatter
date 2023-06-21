@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:sky_chatter/services/models/event.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CalendarWidget extends StatefulWidget {
   final List<Event> events;
@@ -168,6 +169,15 @@ Widget buildSheet(String url, Event data) {
                 }
               },
             ),
+            TextButton(
+                onPressed: () {
+                  launchUrl(Uri.parse(
+                      'https://ryan-sum.github.io/sky_chatter/#/licenses'));
+                },
+                child: const Text(
+                  "Image Licensing",
+                  style: TextStyle(fontSize: 12),
+                ))
           ],
         ),
       ),

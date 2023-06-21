@@ -12,7 +12,7 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Forgot Password"),
+        title: const Text("Forgot Password"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -20,12 +20,12 @@ class ForgotPassword extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                Spacer(),
-                Text(
+                const Spacer(),
+                const Text(
                   "Please enter your email below. If that email is associated with a registered account, a password reset email will be sent.",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 InputField(
@@ -43,18 +43,28 @@ class ForgotPassword extends StatelessWidget {
                         return null;
                       }
                     }),
-                Spacer(),
+                const Spacer(),
                 CustomButton(
                     text: "Send",
                     color: Theme.of(context).colorScheme.primary,
                     function: () async {
+                      // ignore: unnecessary_null_comparison
                       if (emailController.text != null ||
                           emailController.text.isNotEmpty ||
                           !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                               .hasMatch(emailController.text)) {
                         try {
-                          await FirebaseAuth.instance.sendPasswordResetEmail(
-                              email: emailController.text);
+                          await FirebaseAuth.instance
+                              .sendPasswordResetEmail(
+                                  email: emailController.text)
+                              .then((value) {
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                  'An email has been sent to: ${emailController.text}'),
+                            ));
+                            emailController.clear();
+                          });
                         } on FirebaseAuthException catch (e) {
                           if (e.code.toString() == 'invalid-email') {
                             ScaffoldMessenger.of(context)
@@ -79,7 +89,7 @@ class ForgotPassword extends StatelessWidget {
                         }
                       }
                     }),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
               ],

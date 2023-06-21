@@ -10,7 +10,7 @@ class AuthChangeNotifier extends ChangeNotifier {
 
   Future<String> login(
       String email, String password, BuildContext context) async {
-    String value = 'An error occured.';
+    String value = 'An error occurred.';
     showDialog(
       context: context,
       barrierDismissible: false,

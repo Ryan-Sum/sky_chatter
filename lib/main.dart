@@ -35,11 +35,6 @@ class MyApp extends ConsumerWidget {
       theme: lightThem,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
-      // home: ElevatedButton(
-      //     child: Text(''),
-      //     onPressed: () {
-      //       FirebaseAuth.instance.signOut();
-      //     }),
       home: StreamBuilder(
         stream: ref.read(authProvider).auth.userChanges(),
         builder: (context, snapshot) {

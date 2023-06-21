@@ -84,22 +84,23 @@ class MessagingScreen extends StatelessWidget {
                         }),
                   )),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
                         Expanded(
-                          child: SizedBox(
-                            height: 48,
-                            child: TextFormField(
-                              controller: textEditingController,
-                              textAlignVertical: TextAlignVertical.center,
-                              style: const TextStyle(fontSize: 16),
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(16),
-                                label: const Text('Message'),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(50)),
-                              ),
+                          child: TextFormField(
+                            maxLines: null,
+                            controller: textEditingController,
+                            textAlignVertical: TextAlignVertical.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.all(8),
+                              label: const Text('Message'),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16)),
                             ),
                           ),
                         ),

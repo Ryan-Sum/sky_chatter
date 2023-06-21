@@ -7,6 +7,6 @@
 - Streamlines education
 
 [Documentation](documentation.md)
-[GitHub](https://github.com/Ryan-Sum/fbla_22_23_project)
+[GitHub](https://github.com/Ryan-Sum/sky_chatter",)
 
 ![color](#F0F0F0)

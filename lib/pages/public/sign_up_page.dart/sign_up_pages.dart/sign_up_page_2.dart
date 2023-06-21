@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sky_chatter/global_widgets/custom_button.dart';
 import 'package:sky_chatter/main.dart';
 import 'package:sky_chatter/pages/public/sign_up_page.dart/sign_up_page.dart';
 import 'package:sky_chatter/services/models/user_model.dart';
@@ -16,9 +15,9 @@ class SignUpPage2 extends ConsumerWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          const SizedBox(height: 64),
+          const Spacer(),
           SvgPicture.asset('assets/images/is_this_you.svg'),
-          const SizedBox(height: 64),
+          const Spacer(),
           Text(
             "Is This You?",
             textAlign: TextAlign.center,
@@ -54,29 +53,57 @@ class SignUpPage2 extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          CustomButton(
-              text: 'Yes',
-              color: Theme.of(context).colorScheme.primary,
-              function: () {
-                ref.read(pageController).nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut);
-              }),
-          const SizedBox(
-            height: 8,
+          Row(
+            children: [
+              SizedBox(
+                width: (MediaQuery.of(context).size.width - 40) / 2,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () {
+                    ref.read(pageController).previousPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.tertiary,
+                    ),
+                  ),
+                  child: Text(
+                    'No',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              SizedBox(
+                width: (MediaQuery.of(context).size.width - 40) / 2,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () {
+                    ref.read(pageController).nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  child: Text(
+                    'Yes',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+            ],
           ),
-          CustomButton(
-              text: 'No',
-              color: Theme.of(context).colorScheme.tertiary,
-              function: () {
-                ref.read(pageController).previousPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut);
-              }),
-          const SizedBox(
-            height: 8,
-          ),
-          const Spacer(),
         ],
       ),
     );
