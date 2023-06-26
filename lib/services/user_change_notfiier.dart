@@ -1,9 +1,13 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sky_chatter/services/models/user_model.dart';
 
 class UserChangeNotifier extends ChangeNotifier {
+  // Data about the currently logged in user
   DistrictUser districtUser = DistrictUser(
       idNumber: 0,
       firstName: '',
@@ -11,6 +15,7 @@ class UserChangeNotifier extends ChangeNotifier {
       userType: UserType.teacher,
       authID: '');
 
+  // Signs up a user given an email and password
   Future<bool> signUp(String email, String password) async {
     UserCredential? userCredential;
     bool value = false;
@@ -32,6 +37,7 @@ class UserChangeNotifier extends ChangeNotifier {
     return value;
   }
 
+  // Gets the credentials of a user given an idNumber
   Future<String?> getUser(int idNumber) async {
     String? returnValue = 'Please enter valid ID number';
     districtUser = await FirebaseFirestore.instance
@@ -61,6 +67,7 @@ class UserChangeNotifier extends ChangeNotifier {
     return returnValue;
   }
 
+  // Gets the name og the currents user
   Future<String> getName() async {
     String name = '';
     await FirebaseFirestore.instance.collection("Users").get().then((value) {
@@ -74,6 +81,7 @@ class UserChangeNotifier extends ChangeNotifier {
     return name;
   }
 
+  // Gets the userType of the current user
   Future<UserType> getUserType() async {
     UserType userType = UserType.student;
     await FirebaseFirestore.instance.collection("Users").get().then((value) {

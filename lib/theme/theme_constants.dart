@@ -1,6 +1,10 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Light theme
 ThemeData lightThem = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
@@ -39,6 +43,7 @@ ThemeData lightThem = ThemeData(
   useMaterial3: true,
 );
 
+// Dark theme
 ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme(
       brightness: Brightness.dark,

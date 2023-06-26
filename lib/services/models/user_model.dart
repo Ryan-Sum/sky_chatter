@@ -1,4 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 enum UserType {
   student,
   parent,

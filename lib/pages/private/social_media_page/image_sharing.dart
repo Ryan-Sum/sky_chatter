@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sky_chatter/main.dart';
@@ -13,6 +16,7 @@ class ImageSharing extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Gets list of posts
     Future<List<Post>> posts = ref.read(postProvider).getPost();
 
     return Stack(

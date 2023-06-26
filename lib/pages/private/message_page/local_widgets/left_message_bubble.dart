@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 
 class LeftMessageBubble extends StatelessWidget {

@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sky_chatter/main.dart';
@@ -12,6 +15,7 @@ class AddConversationScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Gets list of recipients
     Future<List<DistrictUser>> future =
         ref.read(userProvider).getUserType().then(
       (value) {

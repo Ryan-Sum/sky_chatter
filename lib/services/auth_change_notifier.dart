@@ -1,13 +1,18 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthChangeNotifier extends ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  // Logs user out globally
   void logout() {
     auth.signOut();
   }
 
+  // Logs user in globally given email and password
   Future<String> login(
       String email, String password, BuildContext context) async {
     String value = 'An error occurred.';
@@ -35,6 +40,7 @@ class AuthChangeNotifier extends ChangeNotifier {
     return value;
   }
 
+  // Validates users email given an email
   String? validateEmail(String? email) {
     if (email == null ||
         email.isEmpty ||
@@ -46,6 +52,7 @@ class AuthChangeNotifier extends ChangeNotifier {
     }
   }
 
+  // Validates that the user has entered a password given a password
   String? validatePassword(String? password) {
     if (password == null || password.isEmpty) {
       return 'Please enter a password';

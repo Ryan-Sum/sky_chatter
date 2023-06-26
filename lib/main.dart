@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,13 +15,16 @@ import 'package:sky_chatter/theme/theme_constants.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  // Ensures app is initialized before starting Firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // Prevents google fonts from fetching fonts from web
   GoogleFonts.config.allowRuntimeFetching = false;
 
+  // Runs app
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -35,6 +41,8 @@ class MyApp extends ConsumerWidget {
       theme: lightThem,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
+
+      // Checks auth state of user and returns corresponding page
       home: StreamBuilder(
         stream: ref.read(authProvider).auth.userChanges(),
         builder: (context, snapshot) {

@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:flutter/material.dart';
 import 'package:sky_chatter/pages/private/attendance_page/attendance_page.dart';
 import 'package:sky_chatter/pages/private/calendar_page/calendar_page.dart';
@@ -15,7 +18,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Users current page
   int currentIndex = 0;
+
+  // List of pages in bottom nav bar
   List<Widget> pages = [
     const SocialMediaPage(),
     const CalendarPage(),

@@ -1,4 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +21,7 @@ class CalendarWidget extends StatefulWidget {
   State<CalendarWidget> createState() => _CalendarWidgetState();
 }
 
+//Setup data for calendar
 DateTime _selectedDay = DateTime.now();
 DateTime _focusedDay = DateTime.now();
 CalendarFormat _calendarFormat = CalendarFormat.month;
@@ -123,6 +126,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   }
 }
 
+// modal for event
 Widget buildSheet(String url, Event data) {
   return Container(
     decoration: const BoxDecoration(

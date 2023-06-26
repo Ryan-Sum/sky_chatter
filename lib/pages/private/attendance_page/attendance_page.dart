@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +18,7 @@ TextEditingController reasonController = TextEditingController();
 class AttendancePage extends ConsumerWidget {
   const AttendancePage({super.key});
 
+  // Gets absences for today
   Future<List<Absence>> getAbsences() async {
     List<Absence> returnValue = [];
     await FirebaseFirestore.instance.collection("absences").get().then((value) {

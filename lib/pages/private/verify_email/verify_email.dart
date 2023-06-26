@@ -1,3 +1,6 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +17,10 @@ class VerifyEmail extends StatefulWidget {
 class _VerifyEmailState extends State<VerifyEmail> {
   @override
   void initState() {
+    // Sends verification email
     FirebaseAuth.instance.currentUser!.sendEmailVerification();
     super.initState();
+    // Reloads page every 3 seconds to check if email is verified
     Timer.periodic(const Duration(seconds: 3), (_) async {
       FirebaseAuth.instance.currentUser?.reload();
     });

@@ -1,4 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,6 +14,7 @@ class ImageHelper {
   })  : _imagePicker = imagePicker ?? ImagePicker(),
         _imageCropper = imageCropper ?? ImageCropper();
 
+  // Picks image from gallery
   Future<XFile?> pickImage({
     ImageSource source = ImageSource.gallery,
     int imageQuality = 100,
@@ -22,6 +25,7 @@ class ImageHelper {
     );
   }
 
+  // Crops image to square given a file
   Future<CroppedFile?> crop({
     required XFile file,
     CropStyle cropStyle = CropStyle.rectangle,
@@ -30,7 +34,6 @@ class ImageHelper {
         sourcePath: file.path,
         cropStyle: cropStyle,
         compressQuality: 1,
-        // ignore: prefer_const_constructors
-        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1));
   }
 }

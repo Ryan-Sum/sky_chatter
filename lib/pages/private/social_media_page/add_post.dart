@@ -1,4 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +19,7 @@ class MessagingScreen extends StatelessWidget {
   final String name;
   final String id;
 
+  // Gets list of messages from Firebase
   Stream<List<Message>> getMessages() {
     return FirebaseFirestore.instance
         .collection('messages')
@@ -106,6 +108,7 @@ class MessagingScreen extends StatelessWidget {
                         ),
                         IconButton(
                             onPressed: () {
+                              // Adds message to firebase
                               FirebaseFirestore.instance
                                   .collection("messages")
                                   .doc(id)

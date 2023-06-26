@@ -1,9 +1,13 @@
+// Application programmed by Ryan Sumiantoro and Alyssa Hayman
+// Copyright 2023 All Rights Reserved
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:sky_chatter/services/models/post_model.dart';
 
 class PostChangeNotifier extends ChangeNotifier {
+  // Gets a list of all posts created for a school
   Future<List<Post>> getPost() async {
     return await FirebaseFirestore.instance.collection("Posts").get().then(
       (value) async {
@@ -23,6 +27,7 @@ class PostChangeNotifier extends ChangeNotifier {
     );
   }
 
+  // Retrieves the download url of an image from Firestore
   Future<String?> getImage(String gsPath) async {
     final gsReference = FirebaseStorage.instance.refFromURL(gsPath);
     String? value;
